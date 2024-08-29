@@ -19,6 +19,7 @@ endef
 define install_k8s_resources
 	kubectl apply -f ./examples/traefik/stable.yml
 	kubectl apply -f ./examples/traefik/canary.yml
+	kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
 endef
 
 .PHONY: install-dependencies
