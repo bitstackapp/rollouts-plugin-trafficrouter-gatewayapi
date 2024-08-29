@@ -155,7 +155,7 @@ This concludes the setup that is specific to Traefik Proxy. The rest of the step
 Create GRPCRoute and connect to the created Gateway resource
 
 ```yaml
-apiVersion: gateway.networking.k8s.io/v1alpha2
+apiVersion: gateway.networking.k8s.io/v1
 kind: GRPCRoute
 metadata:
   name: argo-rollouts-grpc-route
