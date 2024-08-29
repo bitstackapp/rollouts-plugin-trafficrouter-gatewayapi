@@ -18,7 +18,7 @@ import (
 	"sigs.k8s.io/e2e-framework/klient/wait/conditions"
 	"sigs.k8s.io/e2e-framework/pkg/envconf"
 	"sigs.k8s.io/e2e-framework/pkg/features"
-	"sigs.k8s.io/gateway-api/apis/v1alpha2"
+	gatewayv1 "sigs.k8s.io/gateway-api/apis/v1"
 )
 
 func TestSingleGRPCRoute(t *testing.T) {
@@ -36,7 +36,7 @@ func TestSingleGRPCRoute(t *testing.T) {
 }
 
 func setupSingleGRPCRouteEnv(ctx context.Context, t *testing.T, config *envconf.Config) context.Context {
-	var grpcRoute v1alpha2.GRPCRoute
+	var grpcRoute gatewayv1.GRPCRoute
 	var rollout v1alpha1.Rollout
 	clusterResources := config.Client().Resources()
 	resourcesMap := map[string]*unstructured.Unstructured{}
@@ -225,7 +225,7 @@ func teardownSingleGRPCRouteEnv(ctx context.Context, t *testing.T, config *envco
 
 func getMatchGRPCRouteFetcher(t *testing.T, targetWeight int32) func(k8s.Object) bool {
 	return func(obj k8s.Object) bool {
-		var grpcRoute v1alpha2.GRPCRoute
+		var grpcRoute gatewayv1.GRPCRoute
 		unstructuredGRPCRoute, ok := obj.(*unstructured.Unstructured)
 		if !ok {
 			logrus.Error("k8s object type assertion was failed")

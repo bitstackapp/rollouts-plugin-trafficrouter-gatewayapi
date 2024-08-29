@@ -17,13 +17,13 @@ import (
 type RpcPlugin struct {
 	HTTPRouteClient      gatewayApiClientv1.HTTPRouteInterface
 	TCPRouteClient       gatewayApiClientv1alpha2.TCPRouteInterface
-	GRPCRouteClient      gatewayApiClientv1alpha2.GRPCRouteInterface
+	GRPCRouteClient      gatewayApiClientv1.GRPCRouteInterface
 	TestClientset        v1.ConfigMapInterface
 	GatewayAPIClientset  *gatewayAPIClientset.Clientset
 	Clientset            *kubernetes.Clientset
 	UpdatedHTTPRouteMock *gatewayv1.HTTPRoute
 	UpdatedTCPRouteMock  *v1alpha2.TCPRoute
-	UpdatedGRPCRouteMock *v1alpha2.GRPCRoute
+	UpdatedGRPCRouteMock *gatewayv1.GRPCRoute
 	LogCtx               *logrus.Entry
 	IsTest               bool
 }
@@ -84,19 +84,19 @@ type ManagedRouteMap map[string]map[string]int
 
 type HTTPRouteRule v1beta1.HTTPRouteRule
 
-type GRPCRouteRule v1alpha2.GRPCRouteRule
+type GRPCRouteRule gatewayv1.GRPCRouteRule
 
 type TCPRouteRule v1alpha2.TCPRouteRule
 
 type HTTPRouteRuleList []v1beta1.HTTPRouteRule
 
-type GRPCRouteRuleList []v1alpha2.GRPCRouteRule
+type GRPCRouteRuleList []gatewayv1.GRPCRouteRule
 
 type TCPRouteRuleList []v1alpha2.TCPRouteRule
 
 type HTTPBackendRef v1beta1.HTTPBackendRef
 
-type GRPCBackendRef v1alpha2.GRPCBackendRef
+type GRPCBackendRef gatewayv1.GRPCBackendRef
 
 type TCPBackendRef v1beta1.BackendRef
 
